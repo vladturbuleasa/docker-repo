@@ -8,7 +8,7 @@ RUN rm -f /var/cache/yum/x86_64/7/timedhosts.txt
 #Tools:
 RUN \
   yum update -y && \
-  yum install -y zip unzip wget initscripts epel-release net-tools &&\
+  yum install -y createrepo rpm-build zip unzip wget initscripts epel-release net-tools &&\
   yum install -y python-setuptools hostname inotify-tools yum-utils which && \
   yum clean all 
 

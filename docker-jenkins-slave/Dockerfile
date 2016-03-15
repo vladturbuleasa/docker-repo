@@ -14,7 +14,9 @@ RUN yum -y install \
 	unzip \
 	mc \
 	net-tools \
-	vim
+	vim \
+	createrepo \
+	rpm-build
 
 #Installing Oracle JDK:
 ADD jdk.sh /opt/jdk/
