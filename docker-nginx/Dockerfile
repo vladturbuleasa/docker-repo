@@ -1,6 +1,6 @@
 FROM centos
 
-MAINTAINER Vlad Turbuleasa-Jurje <vlad.turbuleasa@gmail.com>
+MAINTAINER Vlad Turbuleasa <vturbuleasa@endava.com>
 
 RUN rm -f /var/cache/yum/timedhosts.txt
 RUN yum clean all
@@ -8,6 +8,12 @@ RUN yum install -y wget && yum install -y epel-release
 
 # Install NGINX Plus
 RUN yum install -y nginx.x86_64
+
+#RUN wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo \
+#	&& rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key 
+#RUN yum -y install jenkins
+
+#RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 RUN rm -rf /etc/nginx/conf.d/*; \
 	mkdir -p /etc/nginx/ssl

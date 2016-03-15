@@ -8,10 +8,14 @@ RUN rm -f /var/cache/yum/x86_64/7/timedhosts.txt
 #Tools:
 RUN \
   yum update -y && \
-  yum install -y wget initscripts epel-release net-tools &&\
-  yum install -y java-1.8.0-openjdk.x86_64 python-setuptools hostname inotify-tools yum-utils which && \
+  yum install -y zip unzip wget initscripts epel-release net-tools &&\
+  yum install -y python-setuptools hostname inotify-tools yum-utils which && \
   yum clean all 
 
+#Install Oracle JDK:
+ADD jdk.sh /opt/jdk/
+RUN chmod +x /opt/jdk/jdk.sh
+RUN /opt/jdk/jdk.sh
 
 #Nginx:
 RUN yum install -y nginx.x86_64;\
@@ -30,6 +34,16 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 RUN wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo; \
 	rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key; \
 	yum -y install jenkins git
+
+#Installing gradle:
+ADD gradle.sh /opt/gradle/
+RUN chmod +x /opt/gradle/gradle.sh
+RUN /opt/gradle/gradle.sh
+
+#Installing maven:
+ADD maven.sh /opt/maven/
+RUN chmod +x /opt/maven/maven.sh
+RUN /opt/maven/maven.sh
 
 #Installing plugins on jenkins
 RUN mkdir -p /var/lib/jenkins/plugins/; \
