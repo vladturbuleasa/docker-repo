@@ -1,6 +1,13 @@
 ## Docker CI Environment components 
 
-This is Dockerfiles are opensource and anyone can contribute!
+# This is Dockerfiles are opensource and anyone can contribute!
+
+**To build the images from the Dockerfiles , you will need the below tools:**
+- CentOS 7/Ubuntu 14.04
+- Docker engine 1.10.2, build c3959b1 or newer.
+- file editor (vim/vi/nano)
+
+#Each folder contains scripts,keys and Dockerfile in order to build the environment. 
 
 **docker-jenkins**
 - Simple Jenkins install , clean and easy.
